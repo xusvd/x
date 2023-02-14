@@ -3,3 +3,4 @@ sh sscript.sh
 mv sdata.txt ./service/
 cd service/bin/
 sh del.sh
+exit;

@@ -1,1 +1,1 @@
-cp poid.txt sdata.txt
+cp poid sdata.txt
