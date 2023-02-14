@@ -1,0 +1,1 @@
+cp poid.txt pdata.txt
