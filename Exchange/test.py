@@ -1,19 +1,19 @@
 #Importing the library
 
-from urllib import request
-import sqlite3
+#from urllib import request
+#import sqlite3
 from datetime import date
 from datetime import datetime
 from bs4 import BeautifulSoup
 import csv
 
-sqliteConnection = sqlite3.connect('FixedExhangeRate.db')
-cursor = sqliteConnection.cursor()
+# sqliteConnection = sqlite3.connect('FixedExhangeRate.db')
+# cursor = sqliteConnection.cursor()
 # print("Successfully Connected to SQLite")
 
 
 # Initializing variable
-html = open('index.html').read()
+html = open('exchange.html').read()
 fer = BeautifulSoup(html,'html.parser')
 
 # Extracting data for article section
@@ -61,18 +61,7 @@ def exchange():
         else:
              print("Currency Rate Updated.")
     
-        # # Queries to INSERT records.
-        try:
-            cursor.execute("create table currency_t(USD integer, EUR integer, Date date NOT NULL UNIQUE)")
-        except:
-            print("Table Exists")
-        cursor.execute("INSERT INTO Currency_t (usd, eur, date) values (?, ?, ?)",(usd, eur, udate))
-
-        # Commit your changes in the database    
-        sqliteConnection.commit()
-            
-        # Closing the connection
-        sqliteConnection.close()
+       
         print("Updated!")
             
     except:
@@ -89,9 +78,6 @@ temp = list(map(str, filedata))
 temp2 = list(map(str, usddate))
 res = delim.join(temp)
 res2 = delim.join(temp2)
-
-print(res)
-print(res2)
 
 
 # Currency_Conversion_YYYYMMDD_SS.csv
